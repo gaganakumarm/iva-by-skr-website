@@ -58,9 +58,219 @@
       justify-content: center;
       text-align: center;
     }
+
+    .site-header {
+      padding: 24px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--earth);
+    }
+
+    .brand-tagline {
+      font-size: 0.8rem;
+      color: var(--moss);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-book {
+      background: var(--clay);
+      color: var(--paper);
+      padding: 10px 20px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 64px 0 96px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      color: var(--clay);
+      margin: 0 0 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      margin: 0 0 20px;
+      max-width: 18ch;
+    }
+
+    .hero h1 em {
+      color: var(--clay);
+      font-style: italic;
+    }
+
+    .hero-subtext {
+      max-width: 60ch;
+      color: var(--earth);
+      font-size: 1.05rem;
+    }
+
+    .rooms {
+      padding: 64px 0 96px;
+      background: var(--mist);
+    }
+
+    .rooms h2 {
+      margin: 0 0 32px;
+      font-size: 1.75rem;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .room-card {
+      background: var(--paper);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .room-band {
+      height: 140px;
+    }
+
+    .band-a {
+      background: linear-gradient(135deg, var(--moss), #6B7A5E);
+    }
+
+    .band-b {
+      background: linear-gradient(135deg, var(--clay), var(--dusk-gold));
+    }
+
+    .band-c {
+      background: linear-gradient(135deg, var(--stone), #DED7C9);
+    }
+
+    .room-body {
+      padding: 20px;
+    }
+
+    .room-tag {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--moss);
+      margin: 0 0 8px;
+    }
+
+    .room-body h3 {
+      margin: 0 0 8px;
+      font-size: 1.3rem;
+    }
+
+    .room-desc {
+      color: var(--earth);
+      margin: 0 0 16px;
+    }
+
+    .room-meta {
+      font-size: 0.9rem;
+      color: var(--moss);
+      margin: 0;
+    }
+
+    @media (max-width: 720px) {
+      .rooms-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <div id="app">Loading…</div>
+
+  <script>
+    (async function () {
+      const app = document.getElementById('app');
+
+      function esc(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      try {
+        const res = await fetch('content/site-data.json', { cache: 'no-store' });
+        const data = await res.json();
+
+        document.title = `${data.hotel.name} — ${data.hotel.tagline}`;
+
+        const bandClass = { a: 'band-a', b: 'band-b', c: 'band-c' };
+
+        const roomsHtml = data.rooms.map(function (room) {
+          return `
+            <div class="room-card">
+              <div class="room-band ${bandClass[room.photo_style] || 'band-a'}"></div>
+              <div class="room-body">
+                <p class="room-tag">${esc(room.tag)}</p>
+                <h3>${esc(room.name)}</h3>
+                <p class="room-desc">${esc(room.description)}</p>
+                <p class="room-meta">${esc(room.bed)} · ${esc(room.price)}</p>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        app.outerHTML = `
+          <header class="site-header">
+            <div class="wrap nav">
+              <div class="brand">
+                <span class="brand-name">${esc(data.hotel.name)}</span>
+                <span class="brand-tagline">${esc(data.hotel.tagline)}</span>
+              </div>
+              <a class="btn-book" href="#rooms">Book Now</a>
+            </div>
+          </header>
+
+          <section class="hero">
+            <div class="wrap">
+              <p class="eyebrow">${esc(data.hero.eyebrow)}</p>
+              <h1>${esc(data.hero.heading_plain)} <em>${esc(data.hero.heading_emphasis)}</em></h1>
+              <p class="hero-subtext">${esc(data.hero.subtext)}</p>
+            </div>
+          </section>
+
+          <section id="rooms" class="rooms">
+            <div class="wrap">
+              <h2>Three rooms, one standard of quiet.</h2>
+              <div class="rooms-grid">
+                ${roomsHtml}
+              </div>
+            </div>
+          </section>
+        `;
+      } catch (err) {
+        app.innerHTML = '<p>Could not load site content. Check content/site-data.json.</p>';
+        console.error(err);
+      }
+    })();
+  </script>
 </body>
 </html>
