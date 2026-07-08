@@ -18,7 +18,7 @@
     "heading_plain": "Why",
     "heading_emphasis": "Petrichor?",
     "paragraph_1": "Petrichor is the particular scent of earth after the first rain — familiar, grounding, a little relieving. It's the feeling we've built the hotel around.",
-    "paragraph_2": "That's the brief we hand our housekeeping and front-desk teams too — not luxury for its own sake, but quiet, clean, unfussy comfort.",
+    "paragraph_2": "That's the brief we hand our housekeeping and front-desk teams too — not luxury for its own sake, but quiet, clean, unfussy comfort that a business or family traveller actually notices.",
     "pull_quote": "Neat rooms, polite staff, and genuinely good breakfast — the kind of stay that doesn't try too hard, and doesn't need to."
   },
   "rooms": [
@@ -30,7 +30,8 @@
     { "title": "24×7 Gym", "description": "Open around the clock." },
     { "title": "Restaurant & Lounge", "description": "Buffet breakfast and all-day dining." },
     { "title": "Housekeeping & Laundry", "description": "Daily housekeeping, no need to ask twice." },
-    { "title": "Free Parking", "description": "On-site parking on Hosur Road." }
+    { "title": "Free Parking", "description": "On-site parking on Hosur Road." },
+    { "title": "EV Charging Station", "description": "On-site charging point for electric vehicles." }
   ],
   "gallery": [
     { "label": "Lobby" }, { "label": "Classic Room" }, { "label": "Restaurant" },

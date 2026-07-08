@@ -15,6 +15,8 @@
       --earth: #3B2E23;
       --moss: #3F4A38;
       --clay: #A9663F;
+      --olive: #B0B42E;
+      --olive-dark: #8D9124;
       --mist: #F3EFE6;
       --stone: #C9C2B4;
       --dusk-gold: #C79A4B;
@@ -60,63 +62,121 @@
     }
 
     .site-header {
-      padding: 24px 0;
+      background: #FFFFFF;
+      box-shadow: 0 1px 0 rgba(59, 46, 35, 0.08);
+      position: relative;
+      z-index: 10;
+    }
+
+    .main-header {
+      min-height: 168px;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-header .wrap {
+      max-width: 1650px;
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 32px;
       position: relative;
     }
 
     .brand {
       display: flex;
-      align-items: baseline;
-      gap: 8px;
-      line-height: 1.2;
+      align-items: center;
     }
 
-    .brand-name {
-      font-family: 'Fraunces', serif;
-      font-weight: 500;
-      font-size: 1.25rem;
-      color: var(--earth);
+    .brand-logo {
+      height: 148px;
+      width: auto;
+      max-width: 280px;
+      display: block;
+      object-fit: contain;
     }
 
-    .brand-tagline {
-      font-size: 0.8rem;
-      color: var(--moss);
-      letter-spacing: 0.02em;
+    .mobile-nav-brand .brand-logo {
+      height: 72px;
+      max-width: 150px;
+    }
+
+    .mobile-nav-brand {
+      padding: 4px 0 16px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--stone);
     }
 
     .btn-book {
-      background: var(--clay);
-      color: var(--paper);
-      padding: 10px 20px;
-      border-radius: 2px;
+      background: var(--olive);
+      color: #FFFFFF;
+      padding: 22px 42px;
+      border-radius: 10px;
       text-decoration: none;
-      font-weight: 500;
+      font-size: 1.15rem;
+      font-weight: 700;
       white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-book:hover {
+      background: var(--olive-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-rooms {
+      color: var(--clay);
+      padding: 20px 34px;
+      border: 2px solid var(--clay);
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 700;
+      white-space: nowrap;
+      line-height: 1;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-rooms:hover {
+      background: var(--clay);
+      color: #FFFFFF;
+      transform: translateY(-1px);
     }
 
     .desktop-nav {
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: center;
+      flex: 1;
+      flex-wrap: wrap;
+      gap: 14px clamp(22px, 2vw, 36px);
       margin-left: auto;
     }
 
     .desktop-nav a {
-      color: var(--earth);
+      display: block;
+      color: #050505;
       text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
+      font-size: clamp(1.08rem, 1.15vw, 1.28rem);
+      font-weight: 600;
+      line-height: 1.2;
     }
 
     .desktop-nav a:hover {
-      color: var(--clay);
+      color: var(--olive-dark);
+    }
+
+    .nav-caret {
+      display: inline-block;
+      margin-left: 6px;
+      transform: translateY(-1px);
+      font-size: 0.95em;
     }
 
     .hamburger {
@@ -146,8 +206,8 @@
       display: none;
       flex-direction: column;
       padding: 8px 24px 16px;
-      background: var(--paper);
-      border-top: 1px solid var(--stone);
+      background: #FFFFFF;
+      border-top: 1px solid rgba(59, 46, 35, 0.12);
     }
 
     .mobile-nav.open {
@@ -155,10 +215,11 @@
     }
 
     .mobile-nav a {
-      padding: 12px 0;
+      padding: 14px 0;
       color: var(--earth);
       text-decoration: none;
-      font-weight: 500;
+      font-size: 1.08rem;
+      font-weight: 600;
       border-bottom: 1px solid var(--stone);
     }
 
@@ -167,21 +228,51 @@
     }
 
     @media (max-width: 760px) {
+      .brand-logo {
+        height: 104px;
+        max-width: 200px;
+      }
+
       .desktop-nav {
         display: none;
       }
 
-      .nav > .btn-book {
+      .nav > .btn-book,
+      .nav > .btn-rooms {
         display: none;
       }
 
       .hamburger {
         display: flex;
       }
+
+      .main-header {
+        min-height: 120px;
+      }
+
+      .nav {
+        gap: 16px;
+      }
     }
 
     .hero {
-      padding: 64px 0 96px;
+      padding: 0;
+    }
+
+    .hero-image {
+      min-height: clamp(420px, 42vw, 620px);
+      background-image:
+        linear-gradient(to bottom, transparent 55%, rgba(59, 46, 35, 0.28) 100%),
+        url("images/hero.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    @media (max-width: 760px) {
+      .hero-image {
+        min-height: clamp(260px, 68vw, 340px);
+      }
     }
 
     .eyebrow {
@@ -959,52 +1050,49 @@
         const whatsappMessage = encodeURIComponent('Hi, I would like to know more about a stay at ' + data.hotel.name + '.');
         const year = new Date().getFullYear();
 
+        const logoAlt = esc(data.hotel.name) + ' — ' + esc(data.hotel.tagline);
+        const logoImg = `<img class="brand-logo" src="logo/logo-clean.png" alt="${logoAlt}" loading="eager">`;
+
         app.outerHTML = `
           <header class="site-header">
-            <div class="wrap nav">
-              <div class="brand">
-                <span class="brand-name">${esc(data.hotel.name)}</span>
-                <span class="brand-tagline">— ${esc(data.hotel.tagline)}</span>
+            <div class="main-header">
+              <div class="wrap nav">
+                <div class="brand">
+                  ${logoImg}
+                </div>
+                <nav class="desktop-nav" aria-label="Primary navigation">
+                  <a href="#amenities">Amenities</a>
+                  <a href="#gallery">Gallery</a>
+                  <a href="#reviews">Reviews</a>
+                  <a href="#faq">FAQ</a>
+                  <a href="#location">Location</a>
+                  <a href="#contact">Contact</a>
+                </nav>
+                <a class="btn-rooms" href="#rooms">View Rooms</a>
+                <a class="btn-book" href="#book">Book Now</a>
+                <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
               </div>
-              <nav class="desktop-nav">
-                <a href="#rooms">Rooms</a>
-                <a href="#amenities">Amenities</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#reviews">Reviews</a>
-                <a href="#book">Book Now</a>
-                <a href="#faq">FAQ</a>
-                <a href="#location">Location</a>
-                <a href="#contact">Contact</a>
-              </nav>
-              <a class="btn-book" href="#rooms">Book Now</a>
-              <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
             </div>
             <nav class="mobile-nav" id="mobile-nav">
-              <a href="#rooms">Rooms</a>
+              <div class="brand mobile-nav-brand">
+                ${logoImg}
+              </div>
               <a href="#amenities">Amenities</a>
               <a href="#gallery">Gallery</a>
               <a href="#reviews">Reviews</a>
-              <a href="#book">Book Now</a>
               <a href="#faq">FAQ</a>
               <a href="#location">Location</a>
               <a href="#contact">Contact</a>
+              <a href="#rooms">View Rooms</a>
             </nav>
           </header>
 
           <section class="hero">
-            <div class="wrap">
-              <p class="eyebrow">${esc(data.hero.eyebrow)}</p>
-              <h1>${esc(data.hero.heading_plain)} <em>${esc(data.hero.heading_emphasis)}</em></h1>
-              <p class="hero-subtext">${esc(data.hero.subtext)}</p>
-              <div class="hero-cta">
-                <a class="btn-book" href="#book">Book Now</a>
-                <a class="btn-outline" href="#rooms">View Rooms</a>
-              </div>
-            </div>
+            <div class="hero-image" role="img" aria-label="${esc(data.hotel.name)} hotel photo"></div>
           </section>
 
           <section id="rooms" class="rooms">
