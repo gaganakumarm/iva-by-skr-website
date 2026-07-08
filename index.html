@@ -67,6 +67,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
+      position: relative;
     }
 
     .brand {
@@ -97,6 +99,85 @@
       text-decoration: none;
       font-weight: 500;
       white-space: nowrap;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-left: auto;
+    }
+
+    .desktop-nav a {
+      color: var(--earth);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--clay);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      flex: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--earth);
+      border-radius: 1px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      padding: 8px 24px 16px;
+      background: var(--paper);
+      border-top: 1px solid var(--stone);
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      padding: 12px 0;
+      color: var(--earth);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: 0;
+    }
+
+    @media (max-width: 760px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .nav > .btn-book {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
     }
 
     .hero {
@@ -194,7 +275,7 @@
       margin: 0;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
       .rooms-grid {
         grid-template-columns: 1fr;
       }
@@ -240,7 +321,7 @@
       font-size: 0.95rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 800px) {
       .amenities-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -325,7 +406,7 @@
       letter-spacing: 0.04em;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
       .reviews-grid {
         grid-template-columns: 1fr;
       }
@@ -370,7 +451,7 @@
       color: var(--clay);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 800px) {
       .ota-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -743,8 +824,33 @@
                 <span class="brand-name">${esc(data.hotel.name)}</span>
                 <span class="brand-tagline">— ${esc(data.hotel.tagline)}</span>
               </div>
+              <nav class="desktop-nav">
+                <a href="#rooms">Rooms</a>
+                <a href="#amenities">Amenities</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#book">Book Now</a>
+                <a href="#faq">FAQ</a>
+                <a href="#location">Location</a>
+                <a href="#contact">Contact</a>
+              </nav>
               <a class="btn-book" href="#rooms">Book Now</a>
+              <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
             </div>
+            <nav class="mobile-nav" id="mobile-nav">
+              <a href="#rooms">Rooms</a>
+              <a href="#amenities">Amenities</a>
+              <a href="#gallery">Gallery</a>
+              <a href="#reviews">Reviews</a>
+              <a href="#book">Book Now</a>
+              <a href="#faq">FAQ</a>
+              <a href="#location">Location</a>
+              <a href="#contact">Contact</a>
+            </nav>
           </header>
 
           <section class="hero">
@@ -861,6 +967,24 @@
           contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             alert('This is a demo form — no submissions are sent yet.');
+          });
+        }
+
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        if (hamburgerBtn && mobileNav) {
+          hamburgerBtn.addEventListener('click', function () {
+            const isOpen = mobileNav.classList.toggle('open');
+            hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+            hamburgerBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+          });
+
+          mobileNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+              mobileNav.classList.remove('open');
+              hamburgerBtn.setAttribute('aria-expanded', 'false');
+              hamburgerBtn.setAttribute('aria-label', 'Open menu');
+            });
           });
         }
 
