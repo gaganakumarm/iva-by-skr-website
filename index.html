@@ -71,7 +71,8 @@
 
     .brand {
       display: flex;
-      flex-direction: column;
+      align-items: baseline;
+      gap: 8px;
       line-height: 1.2;
     }
 
@@ -655,7 +656,7 @@
             <div class="wrap nav">
               <div class="brand">
                 <span class="brand-name">${esc(data.hotel.name)}</span>
-                <span class="brand-tagline">${esc(data.hotel.tagline)}</span>
+                <span class="brand-tagline">— ${esc(data.hotel.tagline)}</span>
               </div>
               <a class="btn-book" href="#rooms">Book Now</a>
             </div>
