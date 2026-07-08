@@ -198,6 +198,362 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .amenities {
+      padding: 64px 0 96px;
+    }
+
+    .amenities h2 {
+      margin: 0 0 32px;
+      font-size: 1.75rem;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .amenity-card {
+      padding: 24px;
+      border: 1px solid var(--stone);
+      border-radius: 4px;
+    }
+
+    .amenity-num {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--clay);
+      margin-bottom: 12px;
+    }
+
+    .amenity-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .amenity-card p {
+      margin: 0;
+      color: var(--earth);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .amenities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery {
+      padding: 64px 0 96px;
+      background: var(--mist);
+    }
+
+    .gallery h2 {
+      margin: 0 0 32px;
+      font-size: 1.75rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-tile {
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      border-radius: 4px;
+      color: var(--earth);
+      font-weight: 500;
+    }
+
+    @media (max-width: 720px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .reviews {
+      padding: 64px 0 96px;
+    }
+
+    .reviews h2 {
+      margin: 0 0 32px;
+      font-size: 1.75rem;
+      max-width: 32ch;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      padding: 24px;
+      background: var(--mist);
+      border-radius: 4px;
+    }
+
+    .review-stars {
+      color: var(--dusk-gold);
+      letter-spacing: 0.1em;
+      margin: 0 0 12px;
+    }
+
+    .review-text {
+      margin: 0 0 16px;
+      color: var(--earth);
+    }
+
+    .review-source {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--moss);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 720px) {
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .book {
+      padding: 64px 0 96px;
+      background: var(--mist);
+    }
+
+    .book h2 {
+      margin: 0 0 32px;
+      font-size: 1.75rem;
+    }
+
+    .ota-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .ota-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px;
+      background: var(--paper);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--earth);
+      border: 1px solid var(--stone);
+    }
+
+    .ota-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    .ota-cta {
+      font-size: 0.85rem;
+      color: var(--clay);
+    }
+
+    @media (max-width: 900px) {
+      .ota-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .ota-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq {
+      padding: 64px 0 96px;
+    }
+
+    .faq h2 {
+      margin: 0 0 32px;
+      font-size: 1.75rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--stone);
+      padding: 16px 0;
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 500;
+      font-family: 'Fraunces', serif;
+    }
+
+    .faq-item p {
+      margin: 12px 0 0;
+      color: var(--earth);
+    }
+
+    .location {
+      padding: 64px 0 96px;
+      background: var(--mist);
+    }
+
+    .location-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .location-inner h2 {
+      margin: 0 0 16px;
+      font-size: 1.75rem;
+    }
+
+    .location-address {
+      margin: 0 0 20px;
+      color: var(--earth);
+    }
+
+    .nearby-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nearby-list li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--stone);
+      padding-bottom: 8px;
+    }
+
+    .location-map {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 800px) {
+      .location-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact {
+      padding: 64px 0 96px;
+    }
+
+    .contact h2 {
+      margin: 0 0 24px;
+      font-size: 1.75rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      margin: 0 0 32px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      padding: 10px 20px;
+      border: 1px solid var(--clay);
+      border-radius: 2px;
+      text-decoration: none;
+      color: var(--clay);
+      font-weight: 500;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+      max-width: 560px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border: 1px solid var(--stone);
+      border-radius: 2px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: var(--paper);
+      color: var(--earth);
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      justify-self: start;
+      padding: 10px 20px;
+      background: var(--moss);
+      color: var(--paper);
+      border: 0;
+      border-radius: 2px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .site-footer {
+      padding: 40px 0;
+      background: var(--earth);
+      color: var(--mist);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .footer-name {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    .footer-tagline {
+      margin: 4px 0 0;
+      font-size: 0.85rem;
+      color: var(--stone);
+    }
+
+    .footer-address,
+    .footer-year {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--stone);
+    }
   </style>
 </head>
 <body>
@@ -223,6 +579,7 @@
         document.title = `${data.hotel.name} — ${data.hotel.tagline}`;
 
         const bandClass = { a: 'band-a', b: 'band-b', c: 'band-c' };
+        const galleryColors = ['#D9CBB8', '#B7C4A9', '#CBB6A3', '#A9B7B0', '#D6C2AE'];
 
         const roomsHtml = data.rooms.map(function (room) {
           return `
@@ -237,6 +594,61 @@
             </div>
           `;
         }).join('');
+
+        const amenitiesHtml = data.amenities.map(function (item, i) {
+          return `
+            <div class="amenity-card">
+              <span class="amenity-num">${String(i + 1).padStart(2, '0')}</span>
+              <h3>${esc(item.title)}</h3>
+              <p>${esc(item.description)}</p>
+            </div>
+          `;
+        }).join('');
+
+        const galleryHtml = data.gallery.map(function (item, i) {
+          const color = galleryColors[i % galleryColors.length];
+          return `
+            <div class="gallery-tile" style="background:${color}">
+              <span>${esc(item.label)}</span>
+            </div>
+          `;
+        }).join('');
+
+        const reviewsHtml = data.reviews.map(function (review) {
+          const stars = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
+          return `
+            <div class="review-card">
+              <p class="review-stars">${stars}</p>
+              <p class="review-text">${esc(review.text)}</p>
+              <p class="review-source">${esc(review.source)}</p>
+            </div>
+          `;
+        }).join('');
+
+        const otaHtml = data.ota_links.map(function (ota) {
+          return `
+            <a class="ota-card" href="${esc(ota.url)}" target="_blank" rel="noopener">
+              <span class="ota-name">${esc(ota.name)}</span>
+              <span class="ota-cta">Check availability</span>
+            </a>
+          `;
+        }).join('');
+
+        const faqHtml = data.faq.map(function (item, i) {
+          return `
+            <details class="faq-item"${i === 0 ? ' open' : ''}>
+              <summary>${esc(item.question)}</summary>
+              <p>${esc(item.answer)}</p>
+            </details>
+          `;
+        }).join('');
+
+        const nearbyHtml = data.location.nearby.map(function (place) {
+          return `<li><span>${esc(place.name)}</span><span>${esc(place.distance)}</span></li>`;
+        }).join('');
+
+        const whatsappMessage = encodeURIComponent('Hi, I would like to know more about a stay at ' + data.hotel.name + '.');
+        const year = new Date().getFullYear();
 
         app.outerHTML = `
           <header class="site-header">
@@ -265,7 +677,102 @@
               </div>
             </div>
           </section>
+
+          <section id="amenities" class="amenities">
+            <div class="wrap">
+              <h2>Everything within a floor or two.</h2>
+              <div class="amenities-grid">
+                ${amenitiesHtml}
+              </div>
+            </div>
+          </section>
+
+          <section id="gallery" class="gallery">
+            <div class="wrap">
+              <h2>Gallery</h2>
+              <div class="gallery-grid">
+                ${galleryHtml}
+              </div>
+            </div>
+          </section>
+
+          <section id="reviews" class="reviews">
+            <div class="wrap">
+              <h2>Rated consistently well across platforms.</h2>
+              <div class="reviews-grid">
+                ${reviewsHtml}
+              </div>
+            </div>
+          </section>
+
+          <section id="book" class="book">
+            <div class="wrap">
+              <h2>Choose where you'd like to book.</h2>
+              <div class="ota-grid">
+                ${otaHtml}
+              </div>
+            </div>
+          </section>
+
+          <section id="faq" class="faq">
+            <div class="wrap">
+              <h2>Frequently asked</h2>
+              <div class="faq-list">
+                ${faqHtml}
+              </div>
+            </div>
+          </section>
+
+          <section id="location" class="location">
+            <div class="wrap location-inner">
+              <div class="location-info">
+                <h2>Find us</h2>
+                <p class="location-address">${esc(data.hotel.address)}</p>
+                <ul class="nearby-list">
+                  ${nearbyHtml}
+                </ul>
+              </div>
+              <iframe class="location-map" src="${esc(data.location.map_embed_url)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </section>
+
+          <section id="contact" class="contact">
+            <div class="wrap">
+              <h2>We reply the same day.</h2>
+              <div class="contact-links">
+                <a href="https://wa.me/${esc(data.hotel.whatsapp)}?text=${whatsappMessage}" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="tel:${esc(data.hotel.phone)}">Call</a>
+                <a href="mailto:${esc(data.hotel.email)}">Email</a>
+              </div>
+              <form class="contact-form" id="contact-form">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="tel" name="phone" placeholder="Phone" required>
+                <input type="text" name="dates" placeholder="Preferred dates">
+                <textarea name="message" placeholder="Message"></textarea>
+                <button type="submit">Send</button>
+              </form>
+            </div>
+          </section>
+
+          <footer class="site-footer">
+            <div class="wrap footer-inner">
+              <div>
+                <p class="footer-name">${esc(data.hotel.name)}</p>
+                <p class="footer-tagline">${esc(data.hotel.tagline)}</p>
+              </div>
+              <p class="footer-address">${esc(data.hotel.address)}</p>
+              <p class="footer-year">© ${year} ${esc(data.hotel.name)}</p>
+            </div>
+          </footer>
         `;
+
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+          contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('This is a demo form — no submissions are sent yet.');
+          });
+        }
       } catch (err) {
         app.innerHTML = '<p>Could not load site content. Check content/site-data.json.</p>';
         console.error(err);
