@@ -1,0 +1,65 @@
+{
+  "hotel": {
+    "name": "Iva By SKR",
+    "tagline": "A Petrichor Hotel",
+    "address": "65/1, Hosur Road, Hebbagodi, Electronic City, Bengaluru, Karnataka 560099",
+    "phone": "+918035209500",
+    "whatsapp": "918035209500",
+    "email": "stay@ivabyskr.example",
+    "rating": "4.3"
+  },
+  "hero": {
+    "eyebrow": "Hebbagodi Metro · Electronic City · Bengaluru",
+    "heading_plain": "A quiet place to land,",
+    "heading_emphasis": "the way the city smells after rain.",
+    "subtext": "Iva By SKR is a Petrichor Hotel — three room types, a 24-hour gym, and a lounge, set opposite Hebbagodi Metro Station on Hosur Road."
+  },
+  "story": {
+    "heading_plain": "Why",
+    "heading_emphasis": "Petrichor?",
+    "paragraph_1": "Petrichor is the particular scent of earth after the first rain — familiar, grounding, a little relieving. It's the feeling we've built the hotel around.",
+    "paragraph_2": "That's the brief we hand our housekeeping and front-desk teams too — not luxury for its own sake, but quiet, clean, unfussy comfort.",
+    "pull_quote": "Neat rooms, polite staff, and genuinely good breakfast — the kind of stay that doesn't try too hard, and doesn't need to."
+  },
+  "rooms": [
+    { "name": "Classic", "tag": "Classic Room", "description": "Compact and efficient — built for the one-night business stopover.", "bed": "1 King or Twin", "price": "On request", "photo_style": "a" },
+    { "name": "Deluxe", "tag": "Deluxe Room", "description": "More room to work and unwind, with a seating nook.", "bed": "1 King, Sofa", "price": "On request", "photo_style": "b" },
+    { "name": "Executive Suite", "tag": "Executive Suite", "description": "The largest layout, ideal for longer stays.", "bed": "1 King, Living Area", "price": "On request", "photo_style": "c" }
+  ],
+  "amenities": [
+    { "title": "24×7 Gym", "description": "Open around the clock." },
+    { "title": "Restaurant & Lounge", "description": "Buffet breakfast and all-day dining." },
+    { "title": "Housekeeping & Laundry", "description": "Daily housekeeping, no need to ask twice." },
+    { "title": "Free Parking", "description": "On-site parking on Hosur Road." }
+  ],
+  "gallery": [
+    { "label": "Lobby" }, { "label": "Classic Room" }, { "label": "Restaurant" },
+    { "label": "Deluxe Room" }, { "label": "Exterior · Hosur Road" }, { "label": "Executive Suite" }
+  ],
+  "reviews": [
+    { "stars": 5, "text": "Guests frequently mention how spacious and well-kept the lobby and restaurant are.", "source": "MakeMyTrip" },
+    { "stars": 5, "text": "Longer-stay guests describe the front desk and housekeeping team as attentive.", "source": "TripAdvisor" },
+    { "stars": 4, "text": "Rooms are consistently described as clean and comfortable.", "source": "Goibibo" }
+  ],
+  "ota_links": [
+    { "name": "MakeMyTrip", "url": "https://www.makemytrip.com/hotels/iva_by_skr_a_petrichor_hotel-details-bangalore.html" },
+    { "name": "Agoda", "url": "https://www.agoda.com/en-in/iva-by-skr-a-petrichor-hotel/hotel/bangalore-in.html" },
+    { "name": "Goibibo", "url": "https://www.goibibo.com/hotels/iva-by-skr-a-petrichor-hotel-in-bangalore-376103401732365082/" },
+    { "name": "Yatra", "url": "https://www.yatra.com/hotels/hotels-in-bangalore/iva-by-skr-a-petrichor-hotel" }
+  ],
+  "faq": [
+    { "question": "What are the check-in and check-out times?", "answer": "Standard check-in is from 12:00 PM and check-out is by 11:45 AM." },
+    { "question": "Is parking available?", "answer": "Yes, on-site parking is available." },
+    { "question": "What's the cancellation policy?", "answer": "Cancellation terms depend on the platform you booked through — check the policy at checkout." },
+    { "question": "Do you host events or group bookings?", "answer": "For groups or corporate stays, contact the hotel directly." }
+  ],
+  "location": {
+    "map_embed_url": "https://www.google.com/maps?q=Iva+By+SKR+A+Petrichor+Hotel+Hebbagodi+Hosur+Road+Electronic+City+Bengaluru&output=embed",
+    "nearby": [
+      { "name": "Hebbagodi Metro Station", "distance": "2 min walk" },
+      { "name": "Electronic City", "distance": "~3 km" },
+      { "name": "Bommasandra", "distance": "Nearby" },
+      { "name": "Bangalore City Railway Station", "distance": "~19 km" }
+    ]
+  }
+}
