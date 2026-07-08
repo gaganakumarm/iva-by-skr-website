@@ -1,0 +1,124 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "site"
+    label: "Site Content"
+    files:
+      - name: "site-data"
+        label: "Site Data"
+        file: "content/site-data.json"
+        format: "json"
+        fields:
+          - label: "Hotel"
+            name: "hotel"
+            widget: "object"
+            fields:
+              - { label: "Hotel Name", name: "name", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Phone Number", name: "phone", widget: "string" }
+              - { label: "WhatsApp Number", name: "whatsapp", widget: "string" }
+              - { label: "Email Address", name: "email", widget: "string" }
+              - { label: "Rating", name: "rating", widget: "string" }
+
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow Text", name: "eyebrow", widget: "string" }
+              - { label: "Heading (Plain Part)", name: "heading_plain", widget: "string" }
+              - { label: "Heading (Emphasis Part)", name: "heading_emphasis", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+
+          - label: "Story Section"
+            name: "story"
+            widget: "object"
+            fields:
+              - { label: "Heading (Plain Part)", name: "heading_plain", widget: "string" }
+              - { label: "Heading (Emphasis Part)", name: "heading_emphasis", widget: "string" }
+              - { label: "Paragraph 1", name: "paragraph_1", widget: "text" }
+              - { label: "Paragraph 2", name: "paragraph_2", widget: "text" }
+              - { label: "Pull Quote", name: "pull_quote", widget: "text" }
+
+          - label: "Rooms"
+            name: "rooms"
+            widget: "list"
+            label_singular: "Room"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Room Name", name: "name", widget: "string" }
+              - { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Bed Type", name: "bed", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - label: "Photo Style"
+                name: "photo_style"
+                widget: "select"
+                options:
+                  - { label: "Style A (Green)", value: "a" }
+                  - { label: "Style B (Terracotta)", value: "b" }
+                  - { label: "Style C (Warm Grey)", value: "c" }
+
+          - label: "Amenities"
+            name: "amenities"
+            widget: "list"
+            label_singular: "Amenity"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Gallery"
+            name: "gallery"
+            widget: "list"
+            label_singular: "Photo"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+
+          - label: "Reviews"
+            name: "reviews"
+            widget: "list"
+            label_singular: "Review"
+            summary: "{{fields.source}} — {{fields.stars}} stars"
+            fields:
+              - { label: "Star Rating", name: "stars", widget: "number", value_type: "int", min: 1, max: 5 }
+              - { label: "Review Text", name: "text", widget: "text" }
+              - { label: "Source", name: "source", widget: "string" }
+
+          - label: "OTA Links"
+            name: "ota_links"
+            widget: "list"
+            label_singular: "OTA Link"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Platform Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+          - label: "FAQ"
+            name: "faq"
+            widget: "list"
+            label_singular: "FAQ Item"
+            summary: "{{fields.question}}"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+
+          - label: "Location"
+            name: "location"
+            widget: "object"
+            fields:
+              - { label: "Map Embed URL", name: "map_embed_url", widget: "string" }
+              - label: "Nearby Places"
+                name: "nearby"
+                widget: "list"
+                label_singular: "Nearby Place"
+                summary: "{{fields.name}} — {{fields.distance}}"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Distance", name: "distance", widget: "string" }
