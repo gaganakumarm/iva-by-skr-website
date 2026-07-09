@@ -150,17 +150,6 @@
       object-fit: contain;
     }
 
-    .mobile-nav-brand .brand-logo {
-      height: 72px;
-      max-width: 150px;
-    }
-
-    .mobile-nav-brand {
-      padding: 4px 0 16px;
-      margin-bottom: 8px;
-      border-bottom: 1px solid var(--stone);
-    }
-
     .btn-book {
       background: var(--slate);
       color: #FFFFFF;
@@ -256,7 +245,7 @@
     .mobile-nav {
       display: none;
       flex-direction: column;
-      padding: 8px 24px 16px;
+      padding: 12px 24px 18px;
       background: #FFFFFF;
       border-top: 1px solid rgba(43, 46, 51, 0.12);
     }
@@ -276,6 +265,34 @@
 
     .mobile-nav a:last-child {
       border-bottom: 0;
+    }
+
+    .mobile-nav .mobile-menu-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding-top: 16px;
+    }
+
+    .mobile-nav .mobile-menu-actions a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-bottom: 0;
+      border-radius: 8px;
+      font-size: var(--font-button);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .mobile-nav .mobile-menu-actions .btn-rooms {
+      border: 2px solid var(--clay);
+    }
+
+    .mobile-nav .mobile-menu-actions .btn-book {
+      color: #FFFFFF;
     }
 
     @media (max-width: 760px) {
@@ -1588,16 +1605,16 @@
               </div>
             </div>
             <nav class="mobile-nav" id="mobile-nav">
-              <div class="brand mobile-nav-brand">
-                ${logoImg}
-              </div>
               <a href="#amenities">Amenities</a>
               <a href="#gallery">Gallery</a>
               <a href="#reviews">Reviews</a>
               <a href="#faq">FAQ</a>
               <a href="#location">Location</a>
               <a href="#contact">Contact</a>
-              <a href="#rooms">View Rooms</a>
+              <div class="mobile-menu-actions">
+                <a class="btn-rooms" href="#rooms">View Rooms</a>
+                <a class="btn-book" href="#book">Book Now</a>
+              </div>
             </nav>
           </header>
 
