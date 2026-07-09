@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Iva By SKR — A Petrichor Hotel</title>
   <meta name="description" content="Iva By SKR — A Petrichor Hotel. A quiet stay opposite Hebbagodi Metro Station, Electronic City, Bengaluru.">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,15 +19,19 @@
 
   <style>
     :root {
-      --earth: #3B2E23;
-      --moss: #3F4A38;
+      --slate: #2E5470;
+      --charcoal: #2B2E33;
       --clay: #A9663F;
-      --olive: #B0B42E;
-      --olive-dark: #8D9124;
       --mist: #F3EFE6;
       --stone: #C9C2B4;
       --dusk-gold: #C79A4B;
       --paper: #FBFAF6;
+      --font-body: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+      --font-small: clamp(0.8rem, 0.75rem + 0.2vw, 0.95rem);
+      --font-button: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+      --font-h1: clamp(2.25rem, 1.8rem + 3vw, 3.75rem);
+      --font-h2: clamp(1.75rem, 1.4rem + 2vw, 2.5rem);
+      --font-h3: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
     }
 
     html {
@@ -36,9 +47,10 @@
     body {
       margin: 0;
       background: var(--paper);
-      color: var(--earth);
+      color: var(--charcoal);
       font-family: 'Work Sans', sans-serif;
-      line-height: 1.6;
+      font-size: var(--font-body);
+      line-height: 1.65;
     }
 
     h1, h2, h3 {
@@ -61,9 +73,48 @@
       text-align: center;
     }
 
+    .intro-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, rgba(251, 250, 246, 0.98), rgba(243, 239, 230, 0.96));
+      opacity: 1;
+      visibility: visible;
+      pointer-events: none;
+      animation: loaderSafetyFade 0.45s ease 2s forwards;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    .intro-loader.done {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .intro-loader img {
+      width: clamp(160px, 22vw, 260px);
+      height: auto;
+      opacity: 0;
+      transform: scale(1.12);
+      animation: logoIntro 1.8s cubic-bezier(.2,.7,.2,1) forwards;
+      filter: drop-shadow(0 18px 32px rgba(43, 46, 51, 0.14));
+    }
+
+    @keyframes logoIntro {
+      0% { opacity: 0; transform: scale(1.16); }
+      28% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes loaderSafetyFade {
+      to { opacity: 0; visibility: hidden; }
+    }
+
     .site-header {
       background: #FFFFFF;
-      box-shadow: 0 1px 0 rgba(59, 46, 35, 0.08);
+      box-shadow: 0 1px 0 rgba(43, 46, 51, 0.08);
       position: relative;
       z-index: 10;
     }
@@ -111,12 +162,12 @@
     }
 
     .btn-book {
-      background: var(--olive);
+      background: var(--slate);
       color: #FFFFFF;
       padding: 22px 42px;
       border-radius: 10px;
       text-decoration: none;
-      font-size: 1.15rem;
+      font-size: var(--font-button);
       font-weight: 700;
       white-space: nowrap;
       text-transform: uppercase;
@@ -126,17 +177,17 @@
     }
 
     .btn-book:hover {
-      background: var(--olive-dark);
+      background: var(--charcoal);
       transform: translateY(-1px);
     }
 
     .btn-rooms {
-      color: var(--clay);
+      color: var(--charcoal);
       padding: 20px 34px;
       border: 2px solid var(--clay);
       border-radius: 10px;
       text-decoration: none;
-      font-size: 1.05rem;
+      font-size: var(--font-button);
       font-weight: 700;
       white-space: nowrap;
       line-height: 1;
@@ -161,15 +212,15 @@
 
     .desktop-nav a {
       display: block;
-      color: #050505;
+      color: var(--charcoal);
       text-decoration: none;
-      font-size: clamp(1.08rem, 1.15vw, 1.28rem);
+      font-size: clamp(0.95rem, 0.88rem + 0.35vw, 1.125rem);
       font-weight: 600;
-      line-height: 1.2;
+      line-height: 1.35;
     }
 
     .desktop-nav a:hover {
-      color: var(--olive-dark);
+      color: var(--slate);
     }
 
     .nav-caret {
@@ -198,7 +249,7 @@
       display: block;
       width: 100%;
       height: 2px;
-      background: var(--earth);
+      background: var(--charcoal);
       border-radius: 1px;
     }
 
@@ -207,7 +258,7 @@
       flex-direction: column;
       padding: 8px 24px 16px;
       background: #FFFFFF;
-      border-top: 1px solid rgba(59, 46, 35, 0.12);
+      border-top: 1px solid rgba(43, 46, 51, 0.12);
     }
 
     .mobile-nav.open {
@@ -216,9 +267,9 @@
 
     .mobile-nav a {
       padding: 14px 0;
-      color: var(--earth);
+      color: var(--charcoal);
       text-decoration: none;
-      font-size: 1.08rem;
+      font-size: var(--font-body);
       font-weight: 600;
       border-bottom: 1px solid var(--stone);
     }
@@ -256,48 +307,114 @@
     }
 
     .hero {
+      position: relative;
       padding: 0;
+      min-height: clamp(520px, 54vw, 720px);
+      color: #FFFFFF;
+    }
+
+    .address-strip {
+      overflow: hidden;
+      background: var(--charcoal);
+      color: var(--paper);
+      border-top: 1px solid rgba(251, 250, 246, 0.08);
+      border-bottom: 1px solid rgba(251, 250, 246, 0.08);
+    }
+
+    .address-track {
+      display: flex;
+      width: max-content;
+      animation: addressTicker 22s linear infinite;
+    }
+
+    .address-track span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 32px;
+      white-space: nowrap;
+      font-size: var(--font-small);
+      letter-spacing: 0.02em;
+    }
+
+    @keyframes addressTicker {
+      from { transform: translateX(100vw); }
+      to { transform: translateX(-100%); }
     }
 
     .hero-image {
-      min-height: clamp(420px, 42vw, 620px);
+      position: absolute;
+      inset: 0;
       background-image:
-        linear-gradient(to bottom, transparent 55%, rgba(59, 46, 35, 0.28) 100%),
+        radial-gradient(circle at 34% 46%, rgba(43, 46, 51, 0.84) 0%, rgba(43, 46, 51, 0.68) 34%, rgba(43, 46, 51, 0.2) 72%),
+        linear-gradient(90deg, rgba(43, 46, 51, 0.92) 0%, rgba(43, 46, 51, 0.72) 48%, rgba(43, 46, 51, 0.32) 100%),
+        linear-gradient(to bottom, rgba(43, 46, 51, 0.2) 0%, rgba(43, 46, 51, 0.6) 100%),
         url("images/hero.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    @media (max-width: 760px) {
-      .hero-image {
-        min-height: clamp(260px, 68vw, 340px);
-      }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      min-height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 56px;
+      padding-bottom: 56px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.42);
     }
 
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      font-size: 0.8rem;
-      color: var(--clay);
+      font-size: var(--font-small);
+      color: rgba(251, 250, 246, 0.94);
       margin: 0 0 16px;
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.25rem);
-      margin: 0 0 20px;
+      font-size: var(--font-h1);
       max-width: 18ch;
+      margin: 0 0 20px;
+      text-shadow: 0 2px 18px rgba(43, 46, 51, 0.45);
     }
 
     .hero h1 em {
-      color: var(--clay);
+      color: #FFFFFF;
       font-style: italic;
     }
 
     .hero-subtext {
-      max-width: 60ch;
-      color: var(--earth);
-      font-size: 1.05rem;
+      max-width: 62ch;
+      color: rgba(251, 250, 246, 0.96);
+      font-size: var(--font-body);
+      margin: 0;
+    }
+
+    .hero .btn-book {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      margin-top: 32px;
+      padding: 16px 30px;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        min-height: clamp(560px, 128vw, 680px);
+      }
+
+      .hero-image {
+        background-image:
+          linear-gradient(to bottom, rgba(43, 46, 51, 0.62) 0%, rgba(43, 46, 51, 0.9) 100%),
+          linear-gradient(to bottom, rgba(43, 46, 51, 0.2) 0%, rgba(43, 46, 51, 0.6) 100%),
+          url("images/hero.png");
+      }
+
     }
 
     .rooms {
@@ -307,7 +424,7 @@
 
     .rooms h2 {
       margin: 0 0 32px;
-      font-size: 1.75rem;
+      font-size: var(--font-h2);
     }
 
     .rooms-grid {
@@ -323,11 +440,27 @@
     }
 
     .room-band {
+      position: relative;
       height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .room-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, rgba(251, 250, 246, 0.12) 0 1px, transparent 1px 9px);
+      opacity: 0.72;
+      pointer-events: none;
     }
 
     .band-a {
-      background: linear-gradient(135deg, var(--moss), #6B7A5E);
+      background: linear-gradient(135deg, var(--slate), #527C99);
     }
 
     .band-b {
@@ -342,27 +475,62 @@
       padding: 20px;
     }
 
-    .room-tag {
+    .room-band-tag {
+      position: absolute;
+      z-index: 1;
+      left: 20px;
+      top: 18px;
       text-transform: uppercase;
-      font-size: 0.75rem;
+      font-size: var(--font-small);
       letter-spacing: 0.06em;
-      color: var(--moss);
-      margin: 0 0 8px;
+      color: rgba(251, 250, 246, 0.94);
+      background: rgba(43, 46, 51, 0.34);
+      padding: 4px 8px;
+      border-radius: 999px;
+      margin: 0;
+    }
+
+    .room-photo-placeholder {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(43, 46, 51, 0.48);
+      box-shadow: 0 8px 24px rgba(43, 46, 51, 0.2);
+    }
+
+    .room-photo-placeholder svg {
+      width: 28px;
+      height: 28px;
+      color: rgba(251, 250, 246, 0.94);
+    }
+
+    .room-photo-note {
+      margin: 0;
+      color: rgba(251, 250, 246, 0.96);
+      font-size: clamp(0.72rem, 0.68rem + 0.16vw, 0.84rem);
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: 0.05em;
     }
 
     .room-body h3 {
       margin: 0 0 8px;
-      font-size: 1.3rem;
+      font-size: var(--font-h3);
     }
 
     .room-desc {
-      color: var(--earth);
+      color: var(--charcoal);
       margin: 0 0 16px;
     }
 
     .room-meta {
-      font-size: 0.9rem;
-      color: var(--moss);
+      font-size: var(--font-small);
+      color: var(--slate);
       margin: 0;
     }
 
@@ -378,13 +546,13 @@
 
     .amenities h2 {
       margin: 0 0 32px;
-      font-size: 1.75rem;
+      font-size: var(--font-h2);
     }
 
     .amenities-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .amenity-card {
@@ -396,31 +564,27 @@
     .amenity-num {
       display: block;
       font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      color: var(--clay);
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 1.9rem);
+      color: #8F5437;
       margin-bottom: 12px;
     }
 
     .amenity-card h3 {
       margin: 0 0 8px;
-      font-size: 1.1rem;
+      font-size: var(--font-h3);
     }
 
     .amenity-card p {
       margin: 0;
-      color: var(--earth);
-      font-size: 0.95rem;
+      color: var(--charcoal);
+      font-size: var(--font-body);
     }
 
     @media (max-width: 800px) {
       .amenities-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 520px) {
-      .amenities-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(5, minmax(180px, 1fr));
+        overflow-x: auto;
+        padding-bottom: 8px;
       }
     }
 
@@ -431,26 +595,32 @@
 
     .gallery h2 {
       margin: 0 0 32px;
-      font-size: 1.75rem;
+      font-size: var(--font-h2);
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
     .gallery-tile {
       aspect-ratio: 4 / 3;
-      display: flex;
-      align-items: flex-end;
-      padding: 16px;
+      overflow: hidden;
+      padding: 0;
       border-radius: 4px;
-      color: var(--earth);
-      font-weight: 500;
+      background-color: var(--slate);
+      background-image: linear-gradient(135deg, var(--slate), var(--charcoal));
     }
 
-    @media (max-width: 720px) {
+    .gallery-tile img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -458,24 +628,71 @@
 
     .reviews {
       padding: 64px 0 96px;
+      background: var(--slate);
     }
 
     .reviews h2 {
-      margin: 0 0 32px;
-      font-size: 1.75rem;
+      margin: 0;
+      font-size: var(--font-h2);
       max-width: 32ch;
+      color: var(--paper);
     }
 
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .rating-summary {
+      flex: none;
+      max-width: 320px;
+      padding: 18px 22px;
+      border: 1px solid rgba(251, 250, 246, 0.24);
+      border-radius: 6px;
+      background: rgba(43, 46, 51, 0.18);
+      color: var(--paper);
+      text-align: right;
+    }
+
+    .rating-summary strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--dusk-gold);
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+      font-weight: 500;
+    }
+
+    .rating-summary span {
+      display: block;
+      color: rgba(251, 250, 246, 0.78);
+      font-size: var(--font-small);
+    }
+
+    .reviews-carousel {
+      position: relative;
+    }
+
+    .reviews-viewport {
+      overflow: hidden;
+    }
+
+    .reviews-track {
+      display: flex;
       gap: 24px;
+      transition: transform 0.35s ease;
     }
 
     .review-card {
-      padding: 24px;
+      flex: 0 0 calc((100% - 48px) / 3);
+      padding: 28px;
       background: var(--mist);
-      border-radius: 4px;
+      border: 1px solid rgba(251, 250, 246, 0.28);
+      border-radius: 8px;
+      box-shadow: 0 18px 40px rgba(43, 46, 51, 0.18);
     }
 
     .review-stars {
@@ -486,20 +703,93 @@
 
     .review-text {
       margin: 0 0 16px;
-      color: var(--earth);
+      color: var(--charcoal);
+      line-height: 1.68;
     }
 
     .review-source {
+      display: inline-flex;
       margin: 0;
-      font-size: 0.85rem;
-      color: var(--moss);
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(46, 84, 112, 0.1);
+      font-size: var(--font-small);
+      color: var(--slate);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
 
+    .review-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .review-arrow {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--dusk-gold);
+      border-radius: 50%;
+      background: var(--charcoal);
+      color: var(--dusk-gold);
+      cursor: pointer;
+    }
+
+    .review-arrow:hover {
+      background: var(--dusk-gold);
+      color: var(--charcoal);
+    }
+
+    .review-arrow svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .review-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .review-dot {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--stone);
+      cursor: pointer;
+    }
+
+    .review-dot.active {
+      background: var(--clay);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reviews-track {
+        transition: none;
+      }
+    }
+
     @media (max-width: 900px) {
-      .reviews-grid {
-        grid-template-columns: 1fr;
+      .reviews-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .rating-summary {
+        width: 100%;
+        max-width: none;
+        text-align: left;
+      }
+
+      .review-card {
+        flex-basis: 100%;
       }
     }
 
@@ -510,7 +800,7 @@
 
     .book h2 {
       margin: 0 0 32px;
-      font-size: 1.75rem;
+      font-size: var(--font-h2);
     }
 
     .ota-grid {
@@ -527,24 +817,56 @@
       background: var(--paper);
       border-radius: 4px;
       text-decoration: none;
-      color: var(--earth);
+      color: var(--charcoal);
       border: 1px solid var(--stone);
     }
 
     .ota-name {
       font-family: 'Fraunces', serif;
       font-weight: 500;
-      font-size: 1.1rem;
+      font-size: var(--font-h3);
     }
 
     .ota-cta {
-      font-size: 0.85rem;
-      color: var(--clay);
+      font-size: var(--font-small);
+      color: var(--charcoal);
+      text-decoration: underline;
+      text-decoration-color: var(--clay);
+      text-underline-offset: 3px;
+    }
+
+    .book-direct {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--stone);
+    }
+
+    .book-direct p {
+      max-width: 68ch;
+      margin: 0;
+      color: var(--charcoal);
+    }
+
+    .book-direct .btn-book {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+      flex: none;
     }
 
     @media (max-width: 800px) {
       .ota-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .book-direct {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
 
@@ -560,7 +882,7 @@
 
     .faq h2 {
       margin: 0 0 32px;
-      font-size: 1.75rem;
+      font-size: var(--font-h2);
     }
 
     .faq-list {
@@ -578,11 +900,14 @@
       cursor: pointer;
       font-weight: 500;
       font-family: 'Fraunces', serif;
+      font-size: var(--font-small);
     }
 
     .faq-item p {
       margin: 12px 0 0;
-      color: var(--earth);
+      color: var(--charcoal);
+      font-size: var(--font-small);
+      line-height: 1.65;
     }
 
     .location {
@@ -599,12 +924,12 @@
 
     .location-inner h2 {
       margin: 0 0 16px;
-      font-size: 1.75rem;
+      font-size: var(--font-h2);
     }
 
     .location-address {
       margin: 0 0 20px;
-      color: var(--earth);
+      color: var(--charcoal);
     }
 
     .nearby-list {
@@ -638,11 +963,14 @@
 
     .contact {
       padding: 64px 0 96px;
+      background: var(--charcoal);
+      color: var(--paper);
     }
 
     .contact h2 {
       margin: 0 0 24px;
-      font-size: 1.75rem;
+      font-size: var(--font-h2);
+      color: var(--paper);
     }
 
     .contact-links {
@@ -653,12 +981,36 @@
     }
 
     .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 10px 20px;
-      border: 1px solid var(--clay);
+      border: 1px solid rgba(251, 250, 246, 0.72);
       border-radius: 2px;
       text-decoration: none;
-      color: var(--clay);
+      color: var(--paper);
+      font-size: var(--font-button);
       font-weight: 500;
+    }
+
+    .whatsapp-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1F7A45;
+      color: #FFFFFF;
+      border: 2px solid var(--paper);
+      box-shadow: 0 0 0 1px rgba(43, 46, 51, 0.18);
+      flex: none;
+    }
+
+    .whatsapp-icon svg {
+      width: 17px;
+      height: 17px;
+      display: block;
     }
 
     .contact-form {
@@ -673,9 +1025,9 @@
       border: 1px solid var(--stone);
       border-radius: 2px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: var(--font-body);
       background: var(--paper);
-      color: var(--earth);
+      color: var(--charcoal);
     }
 
     .contact-form textarea {
@@ -686,17 +1038,64 @@
     .contact-form button {
       justify-self: start;
       padding: 10px 20px;
-      background: var(--moss);
+      background: var(--slate);
       color: var(--paper);
       border: 0;
       border-radius: 2px;
+      font-size: var(--font-button);
       font-weight: 500;
       cursor: pointer;
     }
 
+    .support-panel {
+      margin-top: 40px;
+      padding: 28px;
+      border-top: 1px solid rgba(251, 250, 246, 0.2);
+      border-radius: 8px;
+      background: rgba(251, 250, 246, 0.06);
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .support-panel h3 {
+      margin: 0 0 8px;
+      color: var(--paper);
+      font-size: var(--font-h3);
+    }
+
+    .support-panel p {
+      margin: 0;
+      color: rgba(251, 250, 246, 0.76);
+      font-size: var(--font-small);
+    }
+
+    .policy-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .policy-links a {
+      padding: 8px 12px;
+      border: 1px solid rgba(251, 250, 246, 0.26);
+      border-radius: 999px;
+      color: var(--paper);
+      text-decoration: none;
+      font-size: var(--font-small);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .policy-links a:hover {
+      background: rgba(251, 250, 246, 0.1);
+      border-color: rgba(251, 250, 246, 0.54);
+    }
+
     .site-footer {
       padding: 40px 0;
-      background: var(--earth);
+      background: var(--charcoal);
       color: var(--mist);
     }
 
@@ -712,20 +1111,24 @@
       margin: 0;
       font-family: 'Fraunces', serif;
       font-weight: 500;
-      font-size: 1.1rem;
+      font-size: var(--font-h3);
     }
 
     .footer-tagline {
       margin: 4px 0 0;
-      font-size: 0.85rem;
+      font-size: var(--font-small);
       color: var(--stone);
     }
 
     .footer-address,
     .footer-year {
       margin: 0;
-      font-size: 0.85rem;
+      font-size: var(--font-small);
       color: var(--stone);
+    }
+
+    .mobile-sticky-bar {
+      display: none;
     }
 
     .reveal {
@@ -755,46 +1158,30 @@
     .reveal-stagger > *:nth-child(3) { transition-delay: 0.25s; }
     .reveal-stagger > *:nth-child(4) { transition-delay: 0.35s; }
 
-    @keyframes heroFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero h1,
-    .hero-subtext,
-    .hero-cta {
-      opacity: 0;
-      animation: heroFadeUp 0.8s cubic-bezier(.2,.7,.2,1) forwards;
-    }
-
-    .hero h1 { animation-delay: 0.1s; }
-    .hero-subtext { animation-delay: 0.3s; }
-    .hero-cta { animation-delay: 0.5s; }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-
-    .btn-outline {
-      padding: 10px 20px;
-      border: 1px solid var(--clay);
-      border-radius: 2px;
-      text-decoration: none;
-      color: var(--clay);
-      font-weight: 500;
-      background: transparent;
-    }
-
     @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .intro-loader img,
+      .address-track {
+        animation: none;
+      }
+
+      .intro-loader {
+        animation: loaderSafetyFade 0.01s linear 2s forwards;
+        transition: none;
+      }
+
+      .intro-loader img {
+        opacity: 1;
+        transform: none;
+      }
+
+      .address-track {
+        width: auto;
+      }
+
       .reveal,
       .reveal.in,
       .reveal-stagger > *,
@@ -804,13 +1191,6 @@
         transition: none;
       }
 
-      .hero h1,
-      .hero-subtext,
-      .hero-cta {
-        opacity: 1;
-        transform: none;
-        animation: none;
-      }
     }
 
     .chat-fab {
@@ -820,15 +1200,48 @@
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: var(--clay);
+      background: var(--slate);
       color: var(--paper);
       border: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(59, 46, 35, 0.25);
+      box-shadow: 0 8px 24px rgba(43, 46, 51, 0.25);
       z-index: 1000;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 92px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(251, 250, 246, 0.72);
+      background: var(--charcoal);
+      color: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+      box-shadow: 0 8px 24px rgba(43, 46, 51, 0.22);
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
     }
 
     .chat-fab svg {
@@ -840,12 +1253,12 @@
       position: fixed;
       bottom: 92px;
       right: 24px;
-      width: 320px;
+      width: 420px;
       max-width: calc(100vw - 48px);
-      max-height: 70vh;
+      max-height: 78vh;
       background: var(--paper);
       border-radius: 12px;
-      box-shadow: 0 16px 48px rgba(59, 46, 35, 0.25);
+      box-shadow: 0 16px 48px rgba(43, 46, 51, 0.25);
       display: none;
       flex-direction: column;
       overflow: hidden;
@@ -860,8 +1273,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 20px;
-      background: var(--moss);
+      padding: 20px 24px;
+      background: var(--slate);
       color: var(--paper);
       font-family: 'Fraunces', serif;
       font-weight: 500;
@@ -880,40 +1293,40 @@
     .chat-messages {
       flex: 1;
       overflow-y: auto;
-      padding: 16px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .chat-msg {
       max-width: 85%;
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: 0.9rem;
-      line-height: 1.4;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: var(--font-small);
+      line-height: 1.5;
       white-space: pre-line;
     }
 
     .chat-msg.bot {
       align-self: flex-start;
       background: var(--mist);
-      color: var(--earth);
+      color: var(--charcoal);
       border-bottom-left-radius: 4px;
     }
 
     .chat-msg.user {
       align-self: flex-end;
       background: var(--clay);
-      color: var(--paper);
+      color: #FFFFFF;
       border-bottom-right-radius: 4px;
     }
 
     .chat-options {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      padding: 12px 16px 16px;
+      gap: 10px;
+      padding: 14px 20px 20px;
       border-top: 1px solid var(--stone);
     }
 
@@ -922,12 +1335,12 @@
       display: block;
       width: 100%;
       text-align: left;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border: 1px solid var(--clay);
       border-radius: 8px;
       background: var(--paper);
-      color: var(--clay);
-      font-size: 0.85rem;
+      color: var(--charcoal);
+      font-size: var(--font-small);
       font-weight: 500;
       cursor: pointer;
       text-decoration: none;
@@ -937,7 +1350,7 @@
     .chat-options button:hover,
     .chat-options a:hover {
       background: var(--clay);
-      color: var(--paper);
+      color: #FFFFFF;
     }
 
     @media (max-width: 480px) {
@@ -946,22 +1359,108 @@
         left: 16px;
         width: auto;
         max-width: none;
-        bottom: 88px;
       }
 
       .chat-fab {
-        bottom: 16px;
         right: 16px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding-bottom: 78px;
+      }
+
+      .mobile-sticky-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        min-height: 64px;
+        padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+        background: var(--paper);
+        border-top: 1px solid rgba(43, 46, 51, 0.14);
+        box-shadow: 0 -8px 24px rgba(43, 46, 51, 0.12);
+        gap: 8px;
+      }
+
+      .mobile-sticky-bar a {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 8px;
+        color: var(--charcoal);
+        text-decoration: none;
+        font-size: var(--font-button);
+        font-weight: 700;
+      }
+
+      .mobile-sticky-bar a:first-child {
+        background: var(--slate);
+        color: #FFFFFF;
+      }
+
+      .mobile-sticky-bar a:not(:first-child) {
+        border: 1px solid var(--stone);
+        background: #FFFFFF;
+      }
+
+      .chat-fab {
+        bottom: calc(88px + env(safe-area-inset-bottom));
+        right: 16px;
+      }
+
+      .back-to-top {
+        right: 16px;
+        bottom: calc(154px + env(safe-area-inset-bottom));
+      }
+
+      .chat-panel {
+        bottom: calc(156px + env(safe-area-inset-bottom));
+        right: 16px;
+        max-height: calc(100vh - 184px - env(safe-area-inset-bottom));
+      }
+
+      .address-track span {
+        min-height: 34px;
+        padding: 0 20px;
+      }
+
+      .support-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-links {
+        justify-content: flex-start;
       }
     }
   </style>
 </head>
 <body>
+  <div class="intro-loader" id="intro-loader" aria-hidden="true">
+    <img src="logo/logo-clean.png" alt="">
+  </div>
   <div id="app">Loading…</div>
 
   <script>
     (async function () {
       const app = document.getElementById('app');
+      const introLoader = document.getElementById('intro-loader');
+      const introStartedAt = Date.now();
+
+      function dismissIntroLoader() {
+        if (!introLoader) return;
+        const elapsed = Date.now() - introStartedAt;
+        const delay = Math.max(0, 2000 - elapsed);
+        window.setTimeout(function () {
+          introLoader.classList.add('done');
+        }, delay);
+      }
 
       function esc(str) {
         return String(str)
@@ -979,14 +1478,20 @@
         document.title = `${data.hotel.name} — ${data.hotel.tagline}`;
 
         const bandClass = { a: 'band-a', b: 'band-b', c: 'band-c' };
-        const galleryColors = ['#D9CBB8', '#B7C4A9', '#CBB6A3', '#A9B7B0', '#D6C2AE'];
-
         const roomsHtml = data.rooms.map(function (room) {
           return `
             <div class="room-card">
-              <div class="room-band ${bandClass[room.photo_style] || 'band-a'}"></div>
+              <div class="room-band ${bandClass[room.photo_style] || 'band-a'}">
+                <p class="room-band-tag">${esc(room.tag)}</p>
+                <div class="room-photo-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h3l1.5-2h7L17 8h3v10H4V8z"></path>
+                    <circle cx="12" cy="13" r="3.2"></circle>
+                  </svg>
+                  <p class="room-photo-note">Room visuals will be updated soon</p>
+                </div>
+              </div>
               <div class="room-body">
-                <p class="room-tag">${esc(room.tag)}</p>
                 <h3>${esc(room.name)}</h3>
                 <p class="room-desc">${esc(room.description)}</p>
                 <p class="room-meta">${esc(room.bed)} · ${esc(room.price)}</p>
@@ -1005,11 +1510,10 @@
           `;
         }).join('');
 
-        const galleryHtml = data.gallery.map(function (item, i) {
-          const color = galleryColors[i % galleryColors.length];
+        const galleryHtml = data.gallery.map(function (item) {
           return `
-            <div class="gallery-tile" style="background:${color}">
-              <span>${esc(item.label)}</span>
+            <div class="gallery-tile" aria-label="${esc(item.label)}">
+              ${item.image ? `<img src="${esc(item.image)}" alt="${esc(item.label)}" loading="lazy">` : ''}
             </div>
           `;
         }).join('');
@@ -1027,7 +1531,7 @@
 
         const otaHtml = data.ota_links.map(function (ota) {
           return `
-            <a class="ota-card" href="${esc(ota.url)}" target="_blank" rel="noopener">
+            <a class="ota-card" href="${esc(ota.url)}" target="_blank" rel="noopener noreferrer">
               <span class="ota-name">${esc(ota.name)}</span>
               <span class="ota-cta">Check availability</span>
             </a>
@@ -1049,6 +1553,12 @@
 
         const whatsappMessage = encodeURIComponent('Hi, I would like to know more about a stay at ' + data.hotel.name + '.');
         const year = new Date().getFullYear();
+        const support = data.support || {};
+        const tickerText = support.ticker || `${data.hotel.name} — ${data.hotel.tagline} • ${data.hotel.address} • Call: ${data.hotel.phone} • WhatsApp: ${data.hotel.whatsapp}`;
+        const policyLinks = support.policy_links || [];
+        const policyHtml = policyLinks.map(function (item) {
+          return `<a href="${esc(item.url)}">${esc(item.label)}</a>`;
+        }).join('');
 
         const logoAlt = esc(data.hotel.name) + ' — ' + esc(data.hotel.tagline);
         const logoImg = `<img class="brand-logo" src="logo/logo-clean.png" alt="${logoAlt}" loading="eager">`;
@@ -1091,8 +1601,18 @@
             </nav>
           </header>
 
+          <section class="address-strip" aria-label="Hotel address and contact">
+            <div class="address-track">
+              <span>${esc(tickerText)}</span>
+            </div>
+          </section>
+
           <section class="hero">
             <div class="hero-image" role="img" aria-label="${esc(data.hotel.name)} hotel photo"></div>
+            <div class="wrap hero-content">
+              <h1>${esc(data.hero.heading_plain)} <em>${esc(data.hero.heading_emphasis)}</em></h1>
+              <p class="hero-subtext">${esc(data.hero.subtext)}</p>
+            </div>
           </section>
 
           <section id="rooms" class="rooms">
@@ -1124,9 +1644,32 @@
 
           <section id="reviews" class="reviews reveal">
             <div class="wrap">
-              <h2>Rated consistently well across platforms.</h2>
-              <div class="reviews-grid reveal-stagger">
-                ${reviewsHtml}
+              <div class="reviews-header">
+                <h2>Rated consistently well across platforms.</h2>
+                <div class="rating-summary" aria-label="Guest rating summary">
+                  <strong>4.6★ Guest Rating</strong>
+                  <span>Trusted across leading travel platforms</span>
+                </div>
+              </div>
+              <div class="reviews-carousel" id="reviews-carousel">
+                <div class="reviews-viewport">
+                  <div class="reviews-track reveal-stagger" id="reviews-track">
+                    ${reviewsHtml}
+                  </div>
+                </div>
+                <div class="review-nav" aria-label="Review carousel controls">
+                  <button class="review-arrow" type="button" id="reviews-prev" aria-label="Previous reviews">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M15 18l-6-6 6-6"></path>
+                    </svg>
+                  </button>
+                  <button class="review-arrow" type="button" id="reviews-next" aria-label="Next reviews">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div class="review-dots" id="reviews-dots" aria-label="Review carousel pages"></div>
               </div>
             </div>
           </section>
@@ -1136,6 +1679,10 @@
               <h2>Choose where you'd like to book.</h2>
               <div class="ota-grid">
                 ${otaHtml}
+              </div>
+              <div class="book-direct">
+                <p>Booking for a group, an event, or a corporate rate? Skip the OTAs and talk to us directly — we can usually do better for longer or bulk stays.</p>
+                <a class="btn-book" href="#contact">Enquire Directly</a>
               </div>
             </div>
           </section>
@@ -1166,7 +1713,14 @@
             <div class="wrap">
               <h2>We reply the same day.</h2>
               <div class="contact-links">
-                <a href="https://wa.me/${esc(data.hotel.whatsapp)}?text=${whatsappMessage}" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="https://wa.me/${esc(data.hotel.whatsapp)}?text=${whatsappMessage}" target="_blank" rel="noopener noreferrer">
+                  <span class="whatsapp-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path fill="currentColor" d="M19.1 4.9A9.9 9.9 0 0 0 3.4 16.8L2 22l5.3-1.4A9.9 9.9 0 0 0 22 12a9.8 9.8 0 0 0-2.9-7.1Zm-7 15.4c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12.1 20.3Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.2-.2-.4-.3Z"/>
+                    </svg>
+                  </span>
+                  Chat on WhatsApp
+                </a>
                 <a href="tel:${esc(data.hotel.phone)}">Call</a>
                 <a href="mailto:${esc(data.hotel.email)}">Email</a>
               </div>
@@ -1177,6 +1731,15 @@
                 <textarea name="message" placeholder="Message" autocomplete="off"></textarea>
                 <button type="submit">Send</button>
               </form>
+              <div class="support-panel" aria-label="Guest support and policies">
+                <div>
+                  <h3>${esc(support.title || 'Guest Support')}</h3>
+                  <p>${esc(support.subtitle || 'Helpful policies and support links for a smoother stay.')}</p>
+                </div>
+                <div class="policy-links">
+                  ${policyHtml}
+                </div>
+              </div>
             </div>
           </section>
 
@@ -1190,6 +1753,19 @@
               <p class="footer-year">© ${year} ${esc(data.hotel.name)}</p>
             </div>
           </footer>
+
+          <nav class="mobile-sticky-bar" aria-label="Quick contact actions">
+            <a href="#book">Book Now</a>
+            <a href="tel:${esc(data.hotel.phone)}">Call</a>
+            <a href="https://wa.me/${esc(data.hotel.whatsapp)}?text=${whatsappMessage}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </nav>
+
+          <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 19V5"></path>
+              <path d="M5 12l7-7 7 7"></path>
+            </svg>
+          </button>
 
           <button class="chat-fab" id="chat-fab" aria-label="Open chat" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1208,6 +1784,79 @@
             <div class="chat-options" id="chat-options"></div>
           </div>
         `;
+
+        const reviewsCarousel = document.getElementById('reviews-carousel');
+        if (reviewsCarousel) {
+          const track = document.getElementById('reviews-track');
+          const prevBtn = document.getElementById('reviews-prev');
+          const nextBtn = document.getElementById('reviews-next');
+          const dotsEl = document.getElementById('reviews-dots');
+          const cards = Array.from(track.querySelectorAll('.review-card'));
+          const mobileQuery = window.matchMedia('(max-width: 900px)');
+          let page = 0;
+          let perPage = mobileQuery.matches ? 1 : 3;
+          let pageCount = Math.ceil(cards.length / perPage);
+          let touchStartX = 0;
+
+          function renderDots() {
+            dotsEl.innerHTML = '';
+            for (let i = 0; i < pageCount; i += 1) {
+              const dot = document.createElement('button');
+              dot.type = 'button';
+              dot.className = 'review-dot';
+              dot.setAttribute('aria-label', 'Show review group ' + (i + 1));
+              dot.addEventListener('click', function () {
+                goToPage(i);
+              });
+              dotsEl.appendChild(dot);
+            }
+          }
+
+          function updateCarousel() {
+            const targetCard = cards[page * perPage];
+            const offset = targetCard ? targetCard.offsetLeft : 0;
+            track.style.transform = 'translateX(' + (-offset) + 'px)';
+            Array.from(dotsEl.children).forEach(function (dot, i) {
+              dot.classList.toggle('active', i === page);
+              dot.setAttribute('aria-current', i === page ? 'true' : 'false');
+            });
+          }
+
+          function goToPage(nextPage) {
+            page = (nextPage + pageCount) % pageCount;
+            updateCarousel();
+          }
+
+          function refreshCarousel() {
+            perPage = mobileQuery.matches ? 1 : 3;
+            pageCount = Math.ceil(cards.length / perPage);
+            page = Math.min(page, pageCount - 1);
+            renderDots();
+            updateCarousel();
+          }
+
+          prevBtn.addEventListener('click', function () {
+            goToPage(page - 1);
+          });
+
+          nextBtn.addEventListener('click', function () {
+            goToPage(page + 1);
+          });
+
+          track.addEventListener('touchstart', function (e) {
+            touchStartX = e.touches[0].clientX;
+          }, { passive: true });
+
+          track.addEventListener('touchend', function (e) {
+            const distance = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(distance) > 40) {
+              goToPage(distance < 0 ? page + 1 : page - 1);
+            }
+          });
+
+          window.addEventListener('resize', refreshCarousel);
+          refreshCarousel();
+        }
 
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
@@ -1233,6 +1882,24 @@
               hamburgerBtn.setAttribute('aria-label', 'Open menu');
             });
           });
+        }
+
+        const backToTop = document.getElementById('back-to-top');
+        if (backToTop) {
+          const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+          function updateBackToTop() {
+            backToTop.classList.toggle('visible', window.scrollY > 480);
+          }
+
+          backToTop.addEventListener('click', function () {
+            window.scrollTo({
+              top: 0,
+              behavior: reducedMotion.matches ? 'auto' : 'smooth'
+            });
+          });
+
+          window.addEventListener('scroll', updateBackToTop, { passive: true });
+          updateBackToTop();
         }
 
         const chatFab = document.getElementById('chat-fab');
@@ -1268,7 +1935,7 @@
                 const a = document.createElement('a');
                 a.href = opt.href;
                 a.target = '_blank';
-                a.rel = 'noopener';
+                a.rel = 'noopener noreferrer';
                 a.textContent = opt.label;
                 chatOptions.appendChild(a);
               } else {
@@ -1373,6 +2040,8 @@
       } catch (err) {
         app.innerHTML = '<p>Could not load site content. Check content/site-data.json.</p>';
         console.error(err);
+      } finally {
+        dismissIntroLoader();
       }
     })();
   </script>

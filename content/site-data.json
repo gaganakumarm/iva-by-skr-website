@@ -8,11 +8,23 @@
     "email": "stay@ivabyskr.example",
     "rating": "4.3"
   },
+  "support": {
+    "ticker": "Iva By SKR — A Petrichor Hotel • Hebbagodi, Electronic City, Bengaluru • Call: +918035209500 • WhatsApp: 918035209500",
+    "title": "Guest Support",
+    "subtitle": "Helpful policies and support links for a smoother stay.",
+    "policy_links": [
+      { "label": "Customer Service", "url": "/customer-service.html" },
+      { "label": "Privacy Policy", "url": "/privacy-policy.html" },
+      { "label": "Terms & Conditions", "url": "/terms-and-conditions.html" },
+      { "label": "Cancellation Policy", "url": "/cancellation-policy.html" },
+      { "label": "Refund Policy", "url": "/refund-policy.html" }
+    ]
+  },
   "hero": {
     "eyebrow": "Hebbagodi Metro · Electronic City · Bengaluru",
-    "heading_plain": "A quiet place to land,",
-    "heading_emphasis": "the way the city smells after rain.",
-    "subtext": "Iva By SKR is a Petrichor Hotel — three room types, a 24-hour gym, and a lounge, set opposite Hebbagodi Metro Station on Hosur Road."
+    "heading_plain": "The calm after the rain.",
+    "heading_emphasis": "The comfort before tomorrow.",
+    "subtext": "Inspired by petrichor, Iva By SKR offers elegant rooms, warm hospitality, and modern comforts just opposite Hebbagodi Metro Station—perfect for business travellers, families, and every memorable stay."
   },
   "story": {
     "heading_plain": "Why",
@@ -34,13 +46,22 @@
     { "title": "EV Charging Station", "description": "On-site charging point for electric vehicles." }
   ],
   "gallery": [
-    { "label": "Lobby" }, { "label": "Classic Room" }, { "label": "Restaurant" },
-    { "label": "Deluxe Room" }, { "label": "Exterior · Hosur Road" }, { "label": "Executive Suite" }
+    { "label": "Lobby", "image": "images/g1.jpg" },
+    { "label": "Exterior", "image": "images/g2.jpg" },
+    { "label": "Classic Room", "image": "images/g3.jpg" },
+    { "label": "Deluxe Room", "image": "images/G4.jpg" },
+    { "label": "Executive Suite", "image": "images/G5.jpg" },
+    { "label": "Restaurant", "image": "images/g6.jpg" },
+    { "label": "Reception", "image": "images/g7.jpg" },
+    { "label": "Hallway", "image": "images/G8.jpg" }
   ],
   "reviews": [
     { "stars": 5, "text": "Guests frequently mention how spacious and well-kept the lobby and restaurant are.", "source": "MakeMyTrip" },
     { "stars": 5, "text": "Longer-stay guests describe the front desk and housekeeping team as attentive.", "source": "TripAdvisor" },
-    { "stars": 4, "text": "Rooms are consistently described as clean and comfortable.", "source": "Goibibo" }
+    { "stars": 4, "text": "Rooms are consistently described as clean and comfortable.", "source": "Goibibo" },
+    { "stars": 5, "text": "Business travelers frequently highlight how convenient the location is for reaching nearby tech parks and offices, right by the metro.", "source": "Agoda" },
+    { "stars": 4, "text": "The breakfast buffet is a repeated highlight, with guests describing it as generous and well-prepared for the price.", "source": "MakeMyTrip" },
+    { "stars": 5, "text": "Multiple guests describe the front-desk team as courteous and quick to help during check-in.", "source": "TripAdvisor" }
   ],
   "ota_links": [
     { "name": "MakeMyTrip", "url": "https://www.makemytrip.com/hotels/iva_by_skr_a_petrichor_hotel-details-bangalore.html" },

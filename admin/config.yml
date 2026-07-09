@@ -80,6 +80,7 @@ collections:
             summary: "{{fields.label}}"
             fields:
               - { label: "Label", name: "label", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
 
           - label: "Reviews"
             name: "reviews"
