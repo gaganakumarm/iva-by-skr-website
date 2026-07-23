@@ -463,29 +463,19 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 20px;
+      padding: 0;
       overflow: hidden;
     }
 
-    .room-band::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(135deg, rgba(251, 250, 246, 0.12) 0 1px, transparent 1px 9px);
-      opacity: 0.72;
-      pointer-events: none;
+    .room-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
     }
 
-    .band-a {
-      background: linear-gradient(135deg, var(--slate), #527C99);
-    }
-
-    .band-b {
-      background: linear-gradient(135deg, var(--clay), var(--dusk-gold));
-    }
-
-    .band-c {
-      background: linear-gradient(135deg, var(--stone), #DED7C9);
+    .room-card:hover .room-band img {
+      transform: scale(1.03);
     }
 
     .room-body {
@@ -505,34 +495,6 @@
       padding: 4px 8px;
       border-radius: 999px;
       margin: 0;
-    }
-
-    .room-photo-placeholder {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(43, 46, 51, 0.48);
-      box-shadow: 0 8px 24px rgba(43, 46, 51, 0.2);
-    }
-
-    .room-photo-placeholder svg {
-      width: 28px;
-      height: 28px;
-      color: rgba(251, 250, 246, 0.94);
-    }
-
-    .room-photo-note {
-      margin: 0;
-      color: rgba(251, 250, 246, 0.96);
-      font-size: clamp(0.72rem, 0.68rem + 0.16vw, 0.84rem);
-      font-style: italic;
-      font-weight: 600;
-      letter-spacing: 0.05em;
     }
 
     .room-body h3 {
@@ -622,6 +584,7 @@
     }
 
     .gallery-tile {
+      position: relative;
       aspect-ratio: 4 / 3;
       overflow: hidden;
       padding: 0;
@@ -637,6 +600,19 @@
       object-fit: cover;
     }
 
+    .gallery-caption {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      margin: 0;
+      padding: 5px 9px;
+      border-radius: 3px;
+      background: rgba(43, 46, 51, 0.78);
+      color: #fff;
+      font-size: 0.78rem;
+      line-height: 1.25;
+    }
+
     @media (max-width: 900px) {
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -644,6 +620,7 @@
     }
 
     .reviews {
+      display: none;
       padding: 64px 0 96px;
       background: var(--slate);
     }
@@ -1037,7 +1014,10 @@
     }
 
     .contact-form input,
+    .contact-form select,
     .contact-form textarea {
+      width: 100%;
+      min-width: 0;
       padding: 12px;
       border: 1px solid var(--stone);
       border-radius: 2px;
@@ -1045,6 +1025,33 @@
       font-size: var(--font-body);
       background: var(--paper);
       color: var(--charcoal);
+    }
+
+    .contact-form label {
+      display: grid;
+      gap: 6px;
+      color: var(--paper);
+      font-size: var(--font-small);
+      font-weight: 600;
+    }
+
+    .contact-form select {
+      width: 100%;
+    }
+
+    .form-status {
+      min-height: 1.5em;
+      margin: 0;
+      color: var(--paper);
+      font-size: var(--font-small);
+    }
+
+    .map-link {
+      display: inline-flex;
+      margin-top: 18px;
+      color: var(--slate);
+      font-weight: 600;
+      text-underline-offset: 3px;
     }
 
     .contact-form textarea {
@@ -1494,19 +1501,12 @@
 
         document.title = `${data.hotel.name} — ${data.hotel.tagline}`;
 
-        const bandClass = { a: 'band-a', b: 'band-b', c: 'band-c' };
         const roomsHtml = data.rooms.map(function (room) {
           return `
             <div class="room-card">
-              <div class="room-band ${bandClass[room.photo_style] || 'band-a'}">
+              <div class="room-band">
+                <img src="${esc(room.image)}" alt="${esc(room.name)} at ${esc(data.hotel.name)}" loading="lazy">
                 <p class="room-band-tag">${esc(room.tag)}</p>
-                <div class="room-photo-placeholder">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 8h3l1.5-2h7L17 8h3v10H4V8z"></path>
-                    <circle cx="12" cy="13" r="3.2"></circle>
-                  </svg>
-                  <p class="room-photo-note">Room visuals will be updated soon</p>
-                </div>
               </div>
               <div class="room-body">
                 <h3>${esc(room.name)}</h3>
@@ -1531,11 +1531,12 @@
           return `
             <div class="gallery-tile" aria-label="${esc(item.label)}">
               ${item.image ? `<img src="${esc(item.image)}" alt="${esc(item.label)}" loading="lazy">` : ''}
+              <p class="gallery-caption">${esc(item.label)} · Hotel photo</p>
             </div>
           `;
         }).join('');
 
-        const reviewsHtml = data.reviews.map(function (review) {
+        const reviewsHtml = (data.reviews || []).map(function (review) {
           const stars = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
           return `
             <div class="review-card">
@@ -1590,7 +1591,6 @@
                 <nav class="desktop-nav" aria-label="Primary navigation">
                   <a href="#amenities">Amenities</a>
                   <a href="#gallery">Gallery</a>
-                  <a href="#reviews">Reviews</a>
                   <a href="#faq">FAQ</a>
                   <a href="#location">Location</a>
                   <a href="#contact">Contact</a>
@@ -1607,7 +1607,6 @@
             <nav class="mobile-nav" id="mobile-nav">
               <a href="#amenities">Amenities</a>
               <a href="#gallery">Gallery</a>
-              <a href="#reviews">Reviews</a>
               <a href="#faq">FAQ</a>
               <a href="#location">Location</a>
               <a href="#contact">Contact</a>
@@ -1721,8 +1720,9 @@
                 <ul class="nearby-list">
                   ${nearbyHtml}
                 </ul>
+                <a class="map-link" href="${esc(data.location.map_url)}" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
               </div>
-              <iframe class="location-map" src="${esc(data.location.map_embed_url)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe class="location-map" src="${esc(data.location.map_embed_url)}" title="Google Map showing Iva By SKR" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
             </div>
           </section>
 
@@ -1738,15 +1738,25 @@
                   </span>
                   Chat on WhatsApp
                 </a>
-                <a href="tel:${esc(data.hotel.phone)}">Call</a>
-                <a href="mailto:${esc(data.hotel.email)}">Email</a>
+                <a href="tel:${esc(data.hotel.phone)}">Call +91 80 3520 9500</a>
               </div>
-              <form class="contact-form" id="contact-form">
-                <input type="text" name="fullname" placeholder="Name" autocomplete="name" required>
-                <input type="tel" name="phone" placeholder="Phone" autocomplete="tel" required>
-                <input type="text" name="dates" placeholder="Preferred dates" autocomplete="off">
-                <textarea name="message" placeholder="Message" autocomplete="off"></textarea>
-                <button type="submit">Send</button>
+              <form class="contact-form" id="contact-form" aria-label="Check availability">
+                <label>Name<input type="text" name="fullname" autocomplete="name" required></label>
+                <label>Phone<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
+                <label>Check-in date<input type="date" name="checkin" required></label>
+                <label>Check-out date<input type="date" name="checkout" required></label>
+                <label>Guests
+                  <select name="guests" required>
+                    <option value="1">1 guest</option>
+                    <option value="2" selected>2 guests</option>
+                    <option value="3">3 guests</option>
+                    <option value="4">4 guests</option>
+                    <option value="5+">5+ guests</option>
+                  </select>
+                </label>
+                <label>Message (optional)<textarea name="message" autocomplete="off"></textarea></label>
+                <button type="submit">Check Availability</button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
               </form>
               <div class="support-panel" aria-label="Guest support and policies">
                 <div>
@@ -1877,6 +1887,33 @@
 
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
+          const checkinInput = contactForm.elements.checkin;
+          const checkoutInput = contactForm.elements.checkout;
+          const today = new Date().toISOString().split('T')[0];
+          checkinInput.min = today;
+          checkoutInput.min = today;
+          checkinInput.addEventListener('change', function () {
+            checkoutInput.min = checkinInput.value || today;
+            if (checkoutInput.value && checkoutInput.value < checkoutInput.min) checkoutInput.value = '';
+          });
+
+          contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const fields = new FormData(contactForm);
+            const message = [
+              'Hi, I would like to check availability at ' + data.hotel.name + '.',
+              'Name: ' + fields.get('fullname'),
+              'Phone: ' + fields.get('phone'),
+              'Check-in: ' + fields.get('checkin'),
+              'Check-out: ' + fields.get('checkout'),
+              'Guests: ' + fields.get('guests'),
+              fields.get('message') ? 'Message: ' + fields.get('message') : ''
+            ].filter(Boolean).join('\n');
+            document.getElementById('form-status').textContent = 'Opening WhatsApp with your enquiry. Tap Send there to contact the hotel.';
+            window.open('https://wa.me/' + data.hotel.whatsapp + '?text=' + encodeURIComponent(message), '_blank', 'noopener');
+          });
+
           contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             alert('This is a demo form — no submissions are sent yet.');

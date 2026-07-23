@@ -7,7 +7,7 @@ A static website for Iva By SKR, a Petrichor Hotel in Hebbagodi, Electronic City
 - **`index.html`** — the whole site. A single HTML file that fetches `content/site-data.json` on load and renders every section (hero, rooms, amenities, gallery, reviews, booking links, FAQ, location, contact, chat widget) from it. No build step, no framework.
 - **`content/site-data.json`** — all the actual text and data on the site (room details, amenities, reviews, FAQs, contact info, etc). Edit this file (or use the CMS below) to change what visitors see.
 - **`admin/`** — a [Decap CMS](https://decapcms.org/) (formerly Netlify CMS) setup so the hotel owner can edit `site-data.json` through a form, without touching code or Git.
-- **`images/`** — where uploaded photos go (currently just a `.gitkeep`, no real photos yet — see "What's still placeholder" below).
+- **`images/`** — the hotel photography used across the room and gallery sections.
 
 ## Deploying it
 
@@ -63,10 +63,11 @@ Under **Identity → Invite users**, enter the owner's email address. They'll ge
 
 No code, no Git, no HTML.
 
-## What's still placeholder
+## Before go-live
 
-- **`hotel.whatsapp` and `hotel.email`** in `site-data.json` are working values but should be double-checked/confirmed as final before go-live — they power the WhatsApp handoff, the contact links, and the chat widget's "talk to the hotel" option.
-- **Gallery images are color placeholders**, not real photos. Swap them out once real photography is available — either by uploading to `images/` and updating the gallery entries through the CMS, or by hand-editing `site-data.json` directly.
+- Confirm the hotel phone and WhatsApp number in `site-data.json`.
+- The enquiry form is intentionally backend-free: it prepares the guest's details and opens WhatsApp for the guest to send.
+- Replace or add photography through `images/` and update the related entries in `site-data.json`.
 
 ## If something breaks
 

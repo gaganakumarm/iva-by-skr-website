@@ -4,64 +4,48 @@
     "tagline": "A Petrichor Hotel",
     "address": "65/1, Hosur Road, Hebbagodi, Electronic City, Bengaluru, Karnataka 560099",
     "phone": "+918035209500",
-    "whatsapp": "918035209500",
-    "email": "stay@ivabyskr.example",
-    "rating": "4.3"
+    "whatsapp": "918035209500"
   },
   "support": {
-    "ticker": "Iva By SKR — A Petrichor Hotel • Hebbagodi, Electronic City, Bengaluru • Call: +918035209500 • WhatsApp: 918035209500",
+    "ticker": "Iva By SKR — A Petrichor Hotel • Hebbagodi, Electronic City, Bengaluru • Call: +91 80 3520 9500",
     "title": "Guest Support",
-    "subtitle": "Helpful policies and support links for a smoother stay.",
-    "policy_links": [
-      { "label": "Customer Service", "url": "/customer-service.html" },
-      { "label": "Privacy Policy", "url": "/privacy-policy.html" },
-      { "label": "Terms & Conditions", "url": "/terms-and-conditions.html" },
-      { "label": "Cancellation Policy", "url": "/cancellation-policy.html" },
-      { "label": "Refund Policy", "url": "/refund-policy.html" }
-    ]
+    "subtitle": "Contact the hotel directly for booking terms, cancellations, refunds, or stay assistance.",
+    "policy_links": []
   },
   "hero": {
-    "eyebrow": "Hebbagodi Metro · Electronic City · Bengaluru",
+    "eyebrow": "Hebbagodi Metro • Electronic City • Bengaluru",
     "heading_plain": "The calm after the rain.",
     "heading_emphasis": "The comfort before tomorrow.",
-    "subtext": "Inspired by petrichor, Iva By SKR offers elegant rooms, warm hospitality, and modern comforts just opposite Hebbagodi Metro Station—perfect for business travellers, families, and every memorable stay."
+    "subtext": "Inspired by petrichor, Iva By SKR offers comfortable rooms, warm hospitality, and modern conveniences opposite Hebbagodi Metro Station—well placed for business trips, family visits, and longer stays in Electronic City."
   },
   "story": {
     "heading_plain": "Why",
     "heading_emphasis": "Petrichor?",
-    "paragraph_1": "Petrichor is the particular scent of earth after the first rain — familiar, grounding, a little relieving. It's the feeling we've built the hotel around.",
-    "paragraph_2": "That's the brief we hand our housekeeping and front-desk teams too — not luxury for its own sake, but quiet, clean, unfussy comfort that a business or family traveller actually notices.",
-    "pull_quote": "Neat rooms, polite staff, and genuinely good breakfast — the kind of stay that doesn't try too hard, and doesn't need to."
+    "paragraph_1": "Petrichor is the familiar scent of earth after the first rain: grounding, fresh, and quietly reassuring. That feeling inspires the hotel.",
+    "paragraph_2": "Iva By SKR focuses on clean, comfortable rooms and practical hospitality for guests visiting Electronic City and south Bengaluru.",
+    "pull_quote": "A convenient Hebbagodi stay with the metro opposite the hotel and Electronic City close by."
   },
   "rooms": [
-    { "name": "Classic", "tag": "Classic Room", "description": "Compact and efficient — built for the one-night business stopover.", "bed": "1 King or Twin", "price": "On request", "photo_style": "a" },
-    { "name": "Deluxe", "tag": "Deluxe Room", "description": "More room to work and unwind, with a seating nook.", "bed": "1 King, Sofa", "price": "On request", "photo_style": "b" },
-    { "name": "Executive Suite", "tag": "Executive Suite", "description": "The largest layout, ideal for longer stays.", "bed": "1 King, Living Area", "price": "On request", "photo_style": "c" }
+    { "name": "Classic", "tag": "Classic Room", "description": "A comfortable room for business trips and short Bengaluru stays.", "bed": "King bed", "price": "Rates on request", "image": "images/g1.jpg" },
+    { "name": "Deluxe", "tag": "Deluxe Room", "description": "A spacious room with seating space to work or unwind.", "bed": "King bed with seating", "price": "Rates on request", "image": "images/hero.png" },
+    { "name": "Executive Suite", "tag": "Executive Suite", "description": "The hotel's largest room category, suited to longer stays.", "bed": "King bed with living area", "price": "Rates on request", "image": "images/g1.jpg" }
   ],
   "amenities": [
-    { "title": "24×7 Gym", "description": "Open around the clock." },
-    { "title": "Restaurant & Lounge", "description": "Buffet breakfast and all-day dining." },
-    { "title": "Housekeeping & Laundry", "description": "Daily housekeeping, no need to ask twice." },
+    { "title": "24×7 Gym", "description": "Open around the clock for resident guests." },
+    { "title": "Restaurant & Lounge", "description": "Buffet breakfast and on-site dining." },
+    { "title": "Housekeeping & Laundry", "description": "Daily housekeeping and laundry service." },
     { "title": "Free Parking", "description": "On-site parking on Hosur Road." },
-    { "title": "EV Charging Station", "description": "On-site charging point for electric vehicles." }
+    { "title": "EV Charging Station", "description": "On-site charging for electric vehicles." }
   ],
   "gallery": [
-    { "label": "Lobby", "image": "images/g1.jpg" },
-    { "label": "Exterior", "image": "images/g2.jpg" },
-    { "label": "Classic Room", "image": "images/g3.jpg" },
-    { "label": "Deluxe Room", "image": "images/G4.jpg" },
-    { "label": "Executive Suite", "image": "images/G5.jpg" },
-    { "label": "Restaurant", "image": "images/g6.jpg" },
-    { "label": "Reception", "image": "images/g7.jpg" },
-    { "label": "Hallway", "image": "images/G8.jpg" }
-  ],
-  "reviews": [
-    { "stars": 5, "text": "Guests frequently mention how spacious and well-kept the lobby and restaurant are.", "source": "MakeMyTrip" },
-    { "stars": 5, "text": "Longer-stay guests describe the front desk and housekeeping team as attentive.", "source": "TripAdvisor" },
-    { "stars": 4, "text": "Rooms are consistently described as clean and comfortable.", "source": "Goibibo" },
-    { "stars": 5, "text": "Business travelers frequently highlight how convenient the location is for reaching nearby tech parks and offices, right by the metro.", "source": "Agoda" },
-    { "stars": 4, "text": "The breakfast buffet is a repeated highlight, with guests describing it as generous and well-prepared for the price.", "source": "MakeMyTrip" },
-    { "stars": 5, "text": "Multiple guests describe the front-desk team as courteous and quick to help during check-in.", "source": "TripAdvisor" }
+    { "label": "Guest room", "image": "images/g1.jpg" },
+    { "label": "Hotel lobby", "image": "images/g2.jpg" },
+    { "label": "Hotel exterior", "image": "images/g3.jpg" },
+    { "label": "Restaurant and buffet", "image": "images/G4.jpg" },
+    { "label": "Breakfast buffet", "image": "images/G5.jpg" },
+    { "label": "Lounge seating", "image": "images/g6.jpg" },
+    { "label": "Lobby seating", "image": "images/g7.jpg" },
+    { "label": "Recreation area", "image": "images/G8.jpg" }
   ],
   "ota_links": [
     { "name": "MakeMyTrip", "url": "https://www.makemytrip.com/hotels/iva_by_skr_a_petrichor_hotel-details-bangalore.html" },
@@ -70,18 +54,19 @@
     { "name": "Yatra", "url": "https://www.yatra.com/hotels/hotels-in-bangalore/iva-by-skr-a-petrichor-hotel" }
   ],
   "faq": [
-    { "question": "What are the check-in and check-out times?", "answer": "Standard check-in is from 12:00 PM and check-out is by 11:45 AM." },
-    { "question": "Is parking available?", "answer": "Yes, on-site parking is available." },
-    { "question": "What's the cancellation policy?", "answer": "Cancellation terms depend on the platform you booked through — check the policy at checkout." },
-    { "question": "Do you host events or group bookings?", "answer": "For groups or corporate stays, contact the hotel directly." }
+    { "question": "What are the check-in and check-out times?", "answer": "Standard check-in is from 12:00 PM and check-out is by 11:45 AM. Please confirm early check-in or late check-out directly with the hotel." },
+    { "question": "Is parking available?", "answer": "Yes, on-site parking is available for hotel guests." },
+    { "question": "What is the cancellation policy?", "answer": "Cancellation terms depend on the rate and booking platform. Review the terms shown when you book or contact the hotel before confirming." },
+    { "question": "Do you accept group or corporate bookings?", "answer": "Yes. Send an enquiry or contact the hotel directly to discuss group and corporate stays." }
   ],
   "location": {
     "map_embed_url": "https://www.google.com/maps?q=Iva+By+SKR+A+Petrichor+Hotel+Hebbagodi+Hosur+Road+Electronic+City+Bengaluru&output=embed",
+    "map_url": "https://www.google.com/maps/search/?api=1&query=Iva+By+SKR+A+Petrichor+Hotel+Hebbagodi+Hosur+Road+Electronic+City+Bengaluru",
     "nearby": [
-      { "name": "Hebbagodi Metro Station", "distance": "2 min walk" },
-      { "name": "Electronic City", "distance": "~3 km" },
+      { "name": "Hebbagodi Metro Station", "distance": "Opposite the hotel" },
+      { "name": "Electronic City", "distance": "Approx. 3 km" },
       { "name": "Bommasandra", "distance": "Nearby" },
-      { "name": "Bangalore City Railway Station", "distance": "~19 km" }
+      { "name": "Bengaluru City Railway Station", "distance": "Approx. 19 km" }
     ]
   }
 }
